@@ -30,10 +30,10 @@ int main()
     Point targetPoint;
     std::cin >> targetPoint.x >> targetPoint.y;
 
-    double firstManipDistance = sqrt(pow(firstManip.x + (targetPoint.x - firstManip.x), 2) + 
-        pow(firstManip.y + (targetPoint.y - firstManip.y), 2));
-    double secondManipDistance = sqrt(pow(secondManip.x + (targetPoint.x - secondManip.x), 2) +
-        pow(secondManip.y + (targetPoint.y - secondManip.y), 2));
+    double firstManipDistance = sqrt(pow(targetPoint.x - firstManip.x, 2) + 
+        pow(targetPoint.y - firstManip.y, 2));
+    double secondManipDistance = sqrt(pow(targetPoint.x - secondManip.x, 2) +
+        pow(targetPoint.y - secondManip.y, 2));
 
     if (firstManipDistance == secondManipDistance) {
         if (firstManip.length > firstManipDistance && secondManip.length > secondManipDistance) {
@@ -43,11 +43,11 @@ int main()
     }
 
     if (firstManipDistance < secondManipDistance) {
-        if (firstManip.length > firstManipDistance) {
+        if (firstManip.length >= firstManipDistance) {
             std::cout << "first manipulator";
             return 0;
         }
-        else if(secondManip.length > secondManipDistance){
+        else if(secondManip.length >= secondManipDistance){
             std::cout << "second manipulator";
             return 0;
         }
@@ -58,11 +58,11 @@ int main()
     }
 
     else {
-        if (secondManip.length > secondManipDistance) {
+        if (secondManip.length >= secondManipDistance) {
             std::cout << "second manipulator";
             return 0;
         }
-        else if (firstManip.length > firstManipDistance) {
+        else if (firstManip.length >= firstManipDistance) {
             std::cout << "first manipulator";
             return 0;
         }
